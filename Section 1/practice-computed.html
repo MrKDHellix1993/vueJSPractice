@@ -1,0 +1,38 @@
+<script src="vue.js"></script>
+<div id='exercise'>
+    <button v-on:click='counter++'>Increase</button>
+    <button @click='counter--'>Decrease</button>
+    <button @click='secondCounter++'>Increase Second</button>
+    <p>Counter : {{ counter }} | {{secondCounter}}</p>
+    <p>Result : {{ result() }} | {{ output }}</p>
+  </div>
+  <script>
+      	new Vue({
+	  el: '#exercise',
+	  data: {
+	    counter: 0,
+	    secondCounter: 0
+    },
+    computed : {
+      output : function(){
+        console.log('Computed');
+        return this.counter >= 5 ? 'Greater than 5': 'Less than 5';
+      }
+    },
+    watch : {
+      counter : function(){
+      var vm = this;
+       setTimeout(function(){
+        console.log('watch executed!!');
+        vm.counter = 0;
+      },2000);
+      }
+    },
+	  methods: {
+      result() {
+       console.log('Inside result method--> ',this.counter);
+       return this.counter >= 5 ? 'Greater than 5': 'Less than 5';
+      }
+	  }
+	});
+  </script>

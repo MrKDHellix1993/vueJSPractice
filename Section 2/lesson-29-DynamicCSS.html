@@ -1,0 +1,38 @@
+<script src="./../Section 1/vue.js"></script>
+<style>
+.demo{
+    width: 100px;
+    height: 100px;
+    background-color: gray;
+    display: inline-block;
+    margin: 10px;
+}
+.red {
+    background-color: red;
+}
+.green {
+    background-color: green;
+}
+.blue {
+    background-color: blue;
+}
+</style>
+<div id="app1">
+    <h2>{{title}}</h2>
+    <div class='demo' @click='setRedCSS = !setRedCSS' :class='divClassCss'></div>
+    <div class='demo' :class='{red : setRedCSS}'></div>
+    <div class='demo' :class='[color, {red : setRedCSS}]'></div>
+    <!-- Only Width Changes with :style & computed property  -->
+    <div class='demo' :style="[myStyle]"></div>
+    <!-- Only Width & heights Changes with :style & computed property Note : Making sqaure  -->
+    <div class='demo' :style="[myStyle, {height : width + 'px'}]"></div>
+    <input type="text" v-model='color'>
+    <input type="text" @keydown.up="width++" @keydown.down="width--" v-model='width'>
+</div>
+<div id="app2">
+    <button ref="vue2Btn" @click='updateTitle' > Update Vue1 Temple Title</button>
+    <hello></hello>
+    <hello></hello>
+</div>
+<script src="lesson29App.js">
+</script>
